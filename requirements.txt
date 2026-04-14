@@ -1,11 +1,5 @@
-# Web Framework
-fastapi>=0.100.0
-uvicorn>=0.23.0
-jinja2>=3.1.0
-python-multipart>=0.0.6
-
-# Model Serving
-stable-baselines3>=2.0.0
-torch==2.2.2+cpu --index-url https://download.pytorch.org/whl/cpu
-numpy>=1.24.0
-scipy>=1.10.0
+fastapi
+uvicorn
+stable-baselines3
+torch --index-url https://download.pytorch.org/whl/cpu
+numpy
