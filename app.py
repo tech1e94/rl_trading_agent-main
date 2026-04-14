@@ -9,7 +9,6 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from stable_baselines3 import DQN, PPO
 
-
 ACTIONS = [
     "EXIT", "HOLD", "AGGRESSIVE_LONG",
     "CONSERVATIVE_LONG", "TREND_FOLLOW", "MEAN_REVERT"
