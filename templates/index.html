@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RL Trading Agent</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input, select, textarea { width: 100%; padding: 8px; }
+        textarea { height: 100px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 5px; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RL Trading Agent Interface</h1>
+        <p>Demonstrate the sentiment-based trading model.</p>
+        
+        <h2>Test Model</h2>
+        <p>Click to run a test prediction with sample data:</p>
+        <form action="/web/test" method="post">
+            <button type="submit">Run Test</button>
+        </form>
+        
+        <h2>Custom Prediction</h2>
+        <p>Enter the 30-dimensional state vector (comma-separated values) for custom prediction.</p>
+        
+        <form action="/web/predict" method="post">
+            <div class="form-group">
+                <label for="model">Model:</label>
+                <select name="model" id="model">
+                    <option value="sentiment">Sentiment</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="state">State Vector (30 comma-separated floats):</label>
+                <textarea name="state" id="state" placeholder="e.g., 50.0, 0.0, 0.0, 0.0, 100.0, 100.0, 0.02, 0.02, 100.0, 100.0, 100.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0"></textarea>
+            </div>
+            
+            <button type="submit">Predict</button>
+        </form>
+        
+        {% if result %}
+        <div class="result {% if result.status == 'error' %}error{% endif %}">
+            <h3>Result</h3>
+            {% if result.status == 'success' %}
+                <p><strong>Status:</strong> {{ result.message }}</p>
+                {% if result.sample_input %}
+                <p><strong>Sample Input:</strong> {{ result.sample_input }}</p>
+                {% endif %}
+                {% if result.input_state %}
+                <p><strong>Input State:</strong> {{ result.input_state }}</p>
+                {% endif %}
+                <p><strong>Model:</strong> {{ result.prediction.model }}</p>
+                <p><strong>Action ID:</strong> {{ result.prediction.action_id }}</p>
+                <p><strong>Strategy:</strong> {{ result.prediction.strategy }}</p>
+                <p><strong>Holding Days:</strong> {{ result.prediction.holding_days }}</p>
+            {% else %}
+                <p><strong>Error:</strong> {{ result.message }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+        
+    </div>
+</body>
+</html>
