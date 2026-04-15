@@ -1,40 +1,5 @@
-# Core Libraries
-numpy>=1.24.0
-pandas>=2.0.0
-matplotlib>=3.7.0
-seaborn>=0.12.0
-scipy>=1.10.0
-
-# Data Collection
-yfinance>=0.2.0
-
-# Technical Analysis (using 'ta' instead of 'pandas-ta')
-ta>=0.10.0
-
-# Deep Learning
-torch>=2.0.0
-transformers>=4.30.0
-
-# Reinforcement Learning
-gymnasium>=0.29.0
-stable-baselines3>=2.0.0
-
-# Web Framework
-fastapi>=0.100.0
-uvicorn>=0.23.0
-jinja2>=3.1.0
-python-multipart>=0.0.6
-
-# NLP
-nltk>=3.8.0
-
-# Utilities
-tqdm>=4.65.0
-pyyaml>=6.0
-jupyter>=1.0.0
-jupyterlab>=4.0.0
-scikit-learn>=1.2.0
-python-dateutil>=2.8.0
-
-# Testing
-pytest>=7.0.0
+fastapi
+uvicorn
+stable-baselines3
+torch --index-url https://download.pytorch.org/whl/cpu
+numpy
